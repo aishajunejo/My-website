@@ -1,188 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pixelcraft Photography</title>
-  <style>
-    /* Reset & base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #fff; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixelcraft Photography Studio</title>
+<style>
+/* Reset & base */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height:1.6; color:#333; background:#fff; }
 
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      padding: 20px 40px;
-      display: flex; justify-content: space-between; align-items: center;
-      background: rgba(255,255,255,0.9);
-      z-index: 100;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    nav .logo { font-size: 1.5rem; font-weight: bold; }
-    nav .menu a { margin-left: 20px; font-weight: bold; color: #333; text-decoration: none; transition: color 0.3s; }
-    nav .menu a:hover { color: #0073e6; }
+/* Navigation */
+nav {
+  position: fixed; top:0; left:0; width:100%;
+  padding:20px 40px;
+  display:flex; justify-content:space-between; align-items:center;
+  background: rgba(255,255,255,0.9); z-index:100;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+nav .logo { font-size:1.5rem; font-weight:bold; }
+nav .menu a { margin-left:20px; font-weight:bold; color:#333; text-decoration:none; transition:color 0.3s; }
+nav .menu a:hover { color:#0073e6; }
 
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      background: url('hero-photo.jpg') center center / cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      text-align: center;
-      color: #fff;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.3);
-    }
-    .hero-content { position: relative; z-index: 1; }
-    .hero-content h1 { font-size: 3rem; letter-spacing: 2px; margin-bottom: 15px; }
-    .hero-content p { font-size: 1.2rem; margin-bottom: 25px; }
-    .hero-content .btn {
-      padding: 12px 25px;
-      background: #0073e6;
-      color: #fff;
-      border-radius: 5px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    .hero-content .btn:hover { background: #005bb5; }
+/* Hero */
+.hero {
+  height:100vh;
+  background:url('hero-photo.jpg') center/cover no-repeat;
+  display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; position:relative;
+}
+.hero::after {
+  content:""; position:absolute; top:0; left:0; right:0; bottom:0;
+  background:rgba(0,0,0,0.4);
+}
+.hero-content { position:relative; z-index:1; max-width:800px; }
+.hero-content h1 { font-size:3rem; letter-spacing:2px; margin-bottom:15px; font-weight:700; }
+.hero-content p { font-size:1.3rem; margin-bottom:25px; font-style:italic; color:#ddd; }
+.hero-content .btn { padding:12px 25px; background:#0073e6; color:#fff; border-radius:5px; font-weight:bold; text-decoration:none; transition:background 0.3s; }
+.hero-content .btn:hover { background:#005bb5; }
 
-    /* Gallery Section */
-    .gallery {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .gallery img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 8px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
+/* Gallery Buttons */
+.gallery-buttons { text-align:center; margin:40px 0; }
+.gallery-buttons button {
+  padding:10px 20px; margin:5px; border:none; background:#0073e6; color:#fff; border-radius:5px; font-weight:bold; cursor:pointer; transition:0.3s;
+}
+.gallery-buttons button:hover { background:#005bb5; }
 
-    /* Lightbox */
-    .lightbox {
-      position: fixed;
-      top:0; left:0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 200;
-    }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    }
-    .lightbox:target { display: flex; }
+/* Gallery Grid */
+.gallery-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:20px; max-width:1200px; margin:auto; }
+.gallery-item { display:none; } /* hidden by default */
+.gallery-item img {
+  width:100%; height:220px; object-fit:cover; border-radius:8px; cursor:pointer; transition:transform 0.3s;
+}
+.gallery-item img:hover { transform:scale(1.05); }
 
-    /* About Section */
-    .about {
-      padding: 60px 20px;
-      max-width: 800px;
-      margin: auto;
-      text-align: center;
-    }
-    .about h2 { font-size: 2.5rem; margin-bottom: 20px; }
-    .about p { font-size: 1.1rem; color: #555; }
+/* Lightbox */
+.lightbox-overlay {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.95); display:flex; justify-content:center; align-items:center; z-index:200;
+  flex-direction:column; color:#fff;
+}
+.lightbox-overlay img { max-width:90%; max-height:80%; border-radius:8px; margin-bottom:15px; }
+.lightbox-caption { font-size:1.1rem; margin-bottom:20px; text-align:center; }
+.lightbox-close, .lightbox-prev, .lightbox-next {
+  position:absolute; top:50%; transform:translateY(-50%); font-size:2rem; color:#fff;
+  background: rgba(0,0,0,0.5); padding:10px 15px; border-radius:5px; cursor:pointer; user-select:none;
+}
+.lightbox-close { top:20px; right:30px; transform:none; font-size:1.5rem; }
+.lightbox-prev { left:30px; }
+.lightbox-next { right:30px; }
 
-    /* Contact Section */
-    .contact {
-      padding: 60px 20px;
-      max-width: 600px;
-      margin: auto;
-      text-align: center;
-    }
-    .contact h2 { font-size: 2.5rem; margin-bottom: 30px; }
-    .contact p { margin-bottom: 10px; font-size: 1.1rem; }
-    .contact a { color: #0073e6; text-decoration: none; }
-    .contact a:hover { text-decoration: underline; }
+/* About Section */
+.about { padding:60px 20px; max-width:800px; margin:auto; text-align:center; }
+.about h2 { font-size:2.5rem; margin-bottom:20px; }
+.about p { font-size:1.1rem; color:#555; }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      background: #222;
-      color: #fff;
-    }
+/* Contact Section */
+.contact { padding:60px 20px; max-width:600px; margin:auto; text-align:center; }
+.contact h2 { font-size:2.5rem; margin-bottom:30px; }
+.contact p { margin-bottom:10px; font-size:1.1rem; }
+.contact a { color:#0073e6; text-decoration:none; }
+.contact a:hover { text-decoration:underline; }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero-content h1 { font-size: 2.2rem; }
-      .hero-content p { font-size: 1rem; }
-    }
-  </style>
+/* Footer */
+footer { text-align:center; padding:40px 20px; background:#222; color:#fff; }
+
+@media(max-width:768px){
+  .hero-content h1 { font-size:2.2rem; }
+  .hero-content p { font-size:1rem; }
+}
+</style>
 </head>
 <body>
 
-  <nav>
-    <div class="logo">Pixelcraft Photography</div>
-    <div class="menu">
-      <a href="#gallery">Gallery</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+<nav>
+  <div class="logo">Pixelcraft Photography</div>
+  <div class="menu">
+    <a href="#gallery">Gallery</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Pixelcraft Photography</h1>
-      <p>Capturing moments, telling stories</p>
-      <a href="#contact" class="btn">Book a Session</a>
-    </div>
-  </section>
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Pixelcraft Photography Studio</h1>
+    <p>Professional imagery for brands, weddings, portraits & more</p>
+    <a href="#contact" class="btn">Book a Session</a>
+  </div>
+</section>
 
-  <section id="gallery" class="gallery">
-    <!-- Lightbox links -->
-    <a href="#img1"><img src="photo1.jpg" alt="Photography 1"></a>
-    <a href="#img2"><img src="photo2.jpg" alt="Photography 2"></a>
-    <a href="#img3"><img src="photo3.jpg" alt="Photography 3"></a>
-    <a href="#img4"><img src="photo4.jpg" alt="Photography 4"></a>
-    <a href="#img5"><img src="photo5.jpg" alt="Photography 5"></a>
-    <a href="#img6"><img src="photo6.jpg" alt="Photography 6"></a>
-  </section>
+<!-- Gallery Section -->
+<section id="gallery">
+  <div class="gallery-buttons">
+    <button class="filter-btn" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="nature">Nature</button>
+    <button class="filter-btn" data-filter="food">Food</button>
+    <button class="filter-btn" data-filter="wedding">Wedding</button>
+    <button class="filter-btn" data-filter="portrait">Portrait</button>
+  </div>
 
-  <!-- Lightbox Images -->
-  <div id="img1" class="lightbox"><a href="#gallery"><img src="photo1.jpg"></a></div>
-  <div id="img2" class="lightbox"><a href="#gallery"><img src="photo2.jpg"></a></div>
-  <div id="img3" class="lightbox"><a href="#gallery"><img src="photo3.jpg"></a></div>
-  <div id="img4" class="lightbox"><a href="#gallery"><img src="photo4.jpg"></a></div>
-  <div id="img5" class="lightbox"><a href="#gallery"><img src="photo5.jpg"></a></div>
-  <div id="img6" class="lightbox"><a href="#gallery"><img src="photo6.jpg"></a></div>
+  <div class="gallery-grid">
+    <!-- Nature -->
+    <div class="gallery-item nature"><img src="nature1.jpg" alt="Nature 1" data-caption="Nature 1"></div>
+    <div class="gallery-item nature"><img src="nature2.jpg" alt="Nature 2" data-caption="Nature 2"></div>
+    <div class="gallery-item nature"><img src="nature3.jpg" alt="Nature 3" data-caption="Nature 3"></div>
+    <div class="gallery-item nature"><img src="nature4.jpg" alt="Nature 4" data-caption="Nature 4"></div>
 
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <p>Hello! I’m the creator of Pixelcraft Photography. I specialize in capturing stunning visuals that tell stories — from portraits to landscapes, every shot is crafted with care and passion.</p>
-  </section>
+    <!-- Food -->
+    <div class="gallery-item food"><img src="food1.jpg" alt="Food 1" data-caption="Food 1"></div>
+    <div class="gallery-item food"><img src="food2.jpg" alt="Food 2" data-caption="Food 2"></div>
+    <div class="gallery-item food"><img src="food3.jpg" alt="Food 3" data-caption="Food 3"></div>
+    <div class="gallery-item food"><img src="food4.jpg" alt="Food 4" data-caption="Food 4"></div>
 
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:ayesha.junejo.111@gmail.com">ayesha.junejo.111@gmail.com</a></p>
-    <p>Instagram: <a href="https://instagram.com/pixelcraftsdesigns" target="_blank">@pixelcraftsdesigns</a></p>
-  </section>
+    <!-- Wedding -->
+    <div class="gallery-item wedding"><img src="wedding1.jpg" alt="Wedding 1" data-caption="Wedding 1"></div>
+    <div class="gallery-item wedding"><img src="wedding2.jpg" alt="Wedding 2" data-caption="Wedding 2"></div>
+    <div class="gallery-item wedding"><img src="wedding3.jpg" alt="Wedding 3" data-caption="Wedding 3"></div>
+    <div class="gallery-item wedding"><img src="wedding4.jpg" alt="Wedding 4" data-caption="Wedding 4"></div>
 
-  <footer>
-    <p>© 2025 Pixelcraft Photography</p>
-  </footer>
+    <!-- Portrait -->
+    <div class="gallery-item portrait"><img src="portrait1.jpg" alt="Portrait 1" data-caption="Portrait 1"></div>
+    <div class="gallery-item portrait"><img src="portrait2.jpg" alt="Portrait 2" data-caption="Portrait 2"></div>
+    <div class="gallery-item portrait"><img src="portrait3.jpg" alt="Portrait 3" data-caption="Portrait 3"></div>
+    <div class="gallery-item portrait"><img src="portrait4.jpg" alt="Portrait 4" data-caption="Portrait 4"></div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox">
+  <span class="lightbox-close" id="close">&times;</span>
+  <span class="lightbox-prev" id="prev">&#10094;</span>
+  <img id="lightbox-img" src="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+  <span class="lightbox-next" id="next">&#10095;</span>
+</div>
+
+<section id="about" class="about">
+  <h2>About Me</h2>
+  <p>Hello! I’m the creator of Pixelcraft Photography Studio. I specialize in capturing stunning visuals that tell stories — from portraits to landscapes, every shot is crafted with care and passion.</p>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:ayesha.junejo.111@gmail.com">ayesha.junejo.111@gmail.com</a></p>
+  <p>Instagram: <a href="https://instagram.com/pixelcraftsdesigns" target="_blank">@pixelcraftsdesigns</a></p>
+</section>
+
+<footer>
+  <p>© 2025 Pixelcraft Photography</p>
+</footer>
+
+<script>
+// Filter gallery
+const filterBtns = document.querySelectorAll('.filter-btn');
+const galleryItems = document.querySelectorAll('.gallery-item');
+function filterGallery(category) {
+  galleryItems.forEach(item => {
+    if(category==='all' || item.classList.contains(category)) item.style.display='block';
+    else item.style.display='none';
+  });
+}
+filterGallery('all');
+filterBtns.forEach(btn => btn.addEventListener('click', ()=> filterGallery(btn.getAttribute('data-filter'))));
+
+// Lightbox
+let currentIndex = 0;
+const images = Array.from(document.querySelectorAll('.gallery-item img'));
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lightbox-img');
+const lbCaption = document.getElementById('lightbox-caption');
+
+function showLightbox(index) {
+  currentIndex = index;
+  const img = images[index];
+  lbImg.src = img.src;
+  lbCaption.textContent = img.dataset.caption;
+  lightbox.style.display = 'flex';
+}
+
+images.forEach((img,i)=> img.addEventListener('click',()=>showLightbox(i)));
+
+document.getElementById('close').addEventListener('click',()=> lightbox.style.display='none');
+
+document.getElementById('prev').addEventListener('click',()=>{
+  currentIndex = (currentIndex-1 + images.length)%images.length;
+  showLightbox(currentIndex);
+});
+document.getElementById('next').addEventListener('click',()=>{
+  currentIndex = (currentIndex+1)%images.length;
+  showLightbox(currentIndex);
+});
+</script>
 
 </body>
 </html>
