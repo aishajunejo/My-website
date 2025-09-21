@@ -21,9 +21,11 @@
     }
     header h1 {
       margin: 0;
+      font-size: 2.5rem;
     }
     header p {
       margin: 5px 0 0;
+      font-size: 1.2rem;
       font-style: italic;
     }
     nav {
@@ -35,20 +37,54 @@
       color: #fff;
       text-decoration: none;
       margin: 0 15px;
+      font-weight: bold;
     }
     section {
       padding: 40px;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
     }
     h2 {
       margin-top: 0;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
     }
-    .projects a {
-      display: block;
-      margin: 8px 0;
-      color: #0073e6;
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .project-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 280px;
+      text-align: center;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 6px;
+    }
+    .project-card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #0073e6;
+      color: #fff;
       text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .project-card a:hover {
+      background: #005bb5;
     }
     footer {
       background: #222;
@@ -56,10 +92,8 @@
       text-align: center;
       padding: 20px 10px;
     }
-    footer a {
-      color: #ffcc00;
-      text-decoration: none;
-      margin: 0 10px;
+    footer p {
+      margin: 0;
     }
   </style>
 </head>
@@ -81,24 +115,39 @@
     I design modern, responsive websites and unique logos to help brands stand out and grow online.</p>
   </section>
 
-  <section id="projects" class="projects">
+  <section id="projects">
     <h2>My Projects</h2>
-    <p>Here are some of my works:</p>
-    <a href="https://example.com/bakery" target="_blank">🍰 Bakery Website</a>
-    <a href="https://example.com/photography" target="_blank">📷 Photography Portfolio</a>
-    <a href="https://example.com/logo-designs" target="_blank">🎨 Logo Design Showcase</a>
+    <div class="projects">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <img src="images/bakery.jpg" alt="Bakery Website">
+        <h3>Bakery Website</h3>
+        <a href="https://example.com/bakery" target="_blank">View Project</a>
+      </div>
+      <!-- Project 2 -->
+      <div class="project-card">
+        <img src="images/photography.jpg" alt="Photography Portfolio">
+        <h3>Photography Portfolio</h3>
+        <a href="https://example.com/photography" target="_blank">View Project</a>
+      </div>
+      <!-- Project 3 -->
+      <div class="project-card">
+        <img src="images/logo.jpg" alt="Logo Design Showcase">
+        <h3>Logo Design Showcase</h3>
+        <a href="https://example.com/logo-designs" target="_blank">View Project</a>
+      </div>
+    </div>
   </section>
 
   <section id="contact">
     <h2>Contact Me</h2>
-    <p>Let’s connect and build something creative together!</p>
     <p>Email: <a href="mailto:ayesha.junejo.111@gmail.com">ayesha.junejo.111@gmail.com</a></p>
     <p>Instagram: <a href="https://instagram.com/pixelcraftsdesigns" target="_blank">@pixelcraftsdesigns</a></p>
     <p>GitHub: <a href="https://github.com/aishajunejo" target="_blank">aishajunejo</a></p>
   </section>
 
   <footer>
-    <p>© 2025 Pixelcraft | Designed with ❤️ by Ayesha Junejo</p>
+    <p>© 2025 Pixelcraft</p>
   </footer>
 </body>
-</html> 
+</html>
