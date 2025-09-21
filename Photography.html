@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pixelcraft Collective</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Hero section */
+    .hero {
+      position: relative;
+      height: 80vh;
+      min-height: 500px;
+      background: url('hero-image.jpg') center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero-content {
+      position: relative;
+      max-width: 800px;
+      padding: 20px;
+      z-index: 1;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+    }
+    .btn {
+      display: inline-block;
+      background: #0073e6;
+      color: white;
+      padding: 12px 25px;
+      margin-top: 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #005bb5;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.9);
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    nav .menu {
+      display: flex;
+      gap: 20px;
+    }
+    nav .menu a {
+      color: #333;
+      font-weight: bold;
+    }
+
+    /* Services / What we do */
+    .services {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    .services h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .service-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .service-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .service-item:hover img {
+      transform: scale(1.1);
+    }
+    .service-item .service-title {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      color: white;
+      background: rgba(0,0,0,0.5);
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+    }
+
+    /* Portfolio / Gallery section */
+    .portfolio {
+      padding: 60px 20px;
+      background: #f9f9f9;
+    }
+    .portfolio h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+    .portfolio-grid {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .portfolio-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .portfolio-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 60px 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .contact h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .contact form input, .contact form textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .contact form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .contact form button {
+      align-self: center;
+      background: #0073e6;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact form button:hover {
+      background: #005bb5;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    footer .socials {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    footer .socials a {
+      color: #fff;
+      font-size: 1.2rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Pixelcraft Collective</div>
+    <div class="menu">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Creative Services for Brands</h1>
+      <p>Professional photography, video, creative direction & full-cycle visuals</p>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </div>
+  </header>
+
+  <section id="services" class="services">
+    <h2>What We Do</h2>
+    <div class="service-grid">
+      <div class="service-item">
+        <img src="service1.jpg" alt="Product Photography">
+        <div class="service-title">Product Photography</div>
+      </div>
+      <div class="service-item">
+        <img src="service2.jpg" alt="Food & Styling">
+        <div class="service-title">Food & Styling</div>
+      </div>
+      <div class="service-item">
+        <img src="service3.jpg" alt="Studio Hire">
+        <div class="service-title">Studio Hire</div>
+      </div>
+      <div class="service-item">
+        <img src="service4.jpg" alt="Creative Direction">
+        <div class="service-title">Creative Direction</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio-grid">
+      <img src="photo1.jpg" alt="Portfolio 1">
+      <img src="photo2.jpg" alt="Portfolio 2">
+      <img src="photo3.jpg" alt="Portfolio 3">
+      <img src="photo4.jpg" alt="Portfolio 4">
+      <img src="photo5.jpg" alt="Portfolio 5">
+      <img src="photo6.jpg" alt="Portfolio 6">
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Let’s Work Together</h2>
+    <form action="#" method="post">
+      <input type="text" name="name" placeholder="Your Name *" required>
+      <input type="email" name="email" placeholder="Your Email *" required>
+      <textarea name="message" placeholder="Tell us about your project *" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Pixelcraft Collective</p>
+    <div class="socials">
+      <a href="#">Instagram</a>
+      <a href="#">Twitter</a>
+      <a href="#">Pinterest</a>
+    </div>
+  </footer>
+
+  <!-- (Optional) Lightbox script or simple JS for menu toggling etc. -->
+</body>
+</html>
