@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Rubik:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --accent:#d9480f; /* warm orange like sweets branding */
+      --accent:#d9480f;
       --dark:#111;
       --muted:#666;
       --bg:#faf8f6;
@@ -21,98 +21,32 @@
       font-family: "Rubik", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background:var(--bg);
       color:var(--dark);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
     }
-
-    /* top contact strip */
-    .topbar{
-      background:#fff;
-      border-bottom:1px solid #eee;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:16px;
-      padding:8px 12px;
-      font-size:14px;
-    }
+    .topbar{background:#fff;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px 12px;font-size:14px;}
     .topbar a{color:var(--accent); font-weight:600; text-decoration:none;}
-
-    header{
-      background:linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-      position:sticky;
-      top:0;
-      z-index:60;
-      backdrop-filter: blur(4px);
-      border-bottom:1px solid #eee;
-    }
-    .nav{
-      max-width:var(--container);
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 16px;
-      gap:12px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
+    header{background:linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));position:sticky;top:0;z-index:60;backdrop-filter: blur(4px);border-bottom:1px solid #eee;}
+    .nav{max-width:var(--container);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;gap:12px;}
+    .brand{display:flex;align-items:center;gap:12px;}
     .brand img{width:52px;height:52px;object-fit:cover;border-radius:8px;}
     .brand h1{font-size:18px;margin:0;font-weight:700;font-family:Montserrat, sans-serif;}
     nav ul{list-style:none;margin:0;padding:0;display:flex;gap:14px;align-items:center;}
     nav a{color:var(--dark);text-decoration:none;font-weight:500;}
-    .btn-cta{
-      background:var(--accent);
-      color:#fff;
-      padding:10px 14px;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:600;
-      display:inline-block;
-    }
-
-    /* hero / carousel */
-    .hero{
-      max-width:var(--container);
-      margin:18px auto;
-      display:grid;
-      grid-template-columns: 1fr 380px;
-      gap:20px;
-      padding:0 16px;
-    }
-    .carousel{
-      position:relative;
-      border-radius:12px;
-      overflow:hidden;
-      min-height:320px;
-      box-shadow:0 6px 22px rgba(20,20,20,0.06);
-      background:#fff;
-    }
+    .btn-cta{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:600;display:inline-block;}
+    .hero{max-width:var(--container);margin:18px auto;display:grid;grid-template-columns: 1fr 380px;gap:20px;padding:0 16px;}
+    .carousel{position:relative;border-radius:12px;overflow:hidden;min-height:320px;box-shadow:0 6px 22px rgba(20,20,20,0.06);background:#fff;}
     .slides{display:flex;transition:transform 0.45s ease;}
     .slide{min-width:100%;height:320px;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;}
-    .carousel .controls{
-      position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:space-between;align-items:center;
-    }
+    .carousel .controls{position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:space-between;align-items:center;}
     .dots{display:flex;gap:8px;}
     .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.5);border:1px solid rgba(0,0,0,0.07)}
     .dot.active{background:var(--accent);}
-
-    /* quick-order card */
-    .order-card{
-      background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 22px rgba(20,20,20,0.06);
-      display:flex;flex-direction:column;gap:12px;height:max-content;
-    }
+    .order-card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 22px rgba(20,20,20,0.06);display:flex;flex-direction:column;gap:12px;height:max-content;}
     .order-card h3{margin:0;font-size:18px;}
     .price{font-weight:700;color:var(--accent);font-size:20px}
     .order-card .qty{display:flex;gap:8px;align-items:center}
     .qty button{padding:6px 10px;border-radius:8px;border:1px solid #eee;background:#fff}
     .order-card .add{margin-top:8px}
-
-    /* product grid */
     .section{max-width:var(--container);margin:20px auto;padding:0 16px}
     .section h2{font-family:Montserrat;margin:8px 0 14px;font-size:20px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
@@ -121,31 +55,16 @@
     .card .title{font-weight:600}
     .card .meta{font-size:13px;color:var(--muted)}
     .card .actions{margin-top:auto;display:flex;gap:8px}
-
-    /* footer */
     footer{margin-top:30px;background:#fff;padding:18px;border-top:1px solid #eee}
     .footer-inner{max-width:var(--container);margin:0 auto;display:flex;justify-content:space-between;gap:12px;align-items:center;padding:0 16px}
     .socials{display:flex;gap:8px}
-
-    /* cart modal */
-    .modal{
-      position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);z-index:120;
-    }
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);z-index:120;}
     .modal.show{display:flex}
     .modal .panel{background:#fff;padding:18px;border-radius:10px;min-width:320px;max-width:720px}
     .cart-item{display:flex;gap:12px;align-items:center;border-bottom:1px solid #f0f0f0;padding:8px 0}
     .cart-item img{width:72px;height:72px;object-fit:cover;border-radius:8px}
-
-    /* responsive */
-    @media (max-width:920px){
-      .hero{grid-template-columns:1fr}
-      .carousel{min-height:260px}
-      .slide{height:260px}
-    }
-    @media (max-width:520px){
-      nav ul{display:none}
-      .brand h1{font-size:16px}
-    }
+    @media (max-width:920px){.hero{grid-template-columns:1fr}.carousel{min-height:260px}.slide{height:260px}}
+    @media (max-width:520px){nav ul{display:none}.brand h1{font-size:16px}}
   </style>
 </head>
 <body>
@@ -159,7 +78,7 @@
   <header>
     <div class="nav">
       <div class="brand">
-        <img src="images/logo.jpg" alt="Brand logo">
+        <img src="logo.jpg" alt="Brand logo">
         <div>
           <h1>Bakery Store</h1>
           <div style="font-size:12px;color:var(--muted)">Irresistible Sweets & Bakings</div>
@@ -181,23 +100,19 @@
   </header>
 
   <main>
-    <!-- HERO -->
     <div class="hero">
-      <div class="carousel" aria-roledescription="carousel" id="carousel">
+      <div class="carousel" id="carousel">
         <div class="slides">
-          <div class="slide" style="background-image:url('images/slide1.jpg')">
-            <!-- optional overlay -->
-          </div>
-          <div class="slide" style="background-image:url('images/slide2.jpg')"></div>
-          <div class="slide" style="background-image:url('images/slide3.jpg')"></div>
+          <div class="slide" style="background-image:url('slide1.jpg')"></div>
+          <div class="slide" style="background-image:url('slide2.jpg')"></div>
+          <div class="slide" style="background-image:url('slide3.jpg')"></div>
         </div>
-
         <div class="controls">
           <div style="color:#fff;font-weight:600;background:rgba(0,0,0,0.35);padding:6px 10px;border-radius:8px">Free Delivery Over PKR 1200</div>
           <div style="display:flex;gap:8px;align-items:center">
             <div class="dots" id="dots"></div>
-            <button id="prev" style="padding:6px 10px;border-radius:8px;border:none;background:rgba(0,0,0,0.25);color:#fff">Prev</button>
-            <button id="next" style="padding:6px 10px;border-radius:8px;border:none;background:var(--accent);color:#fff">Next</button>
+            <button id="prev">Prev</button>
+            <button id="next">Next</button>
           </div>
         </div>
       </div>
@@ -209,35 +124,24 @@
           <div class="price">PKR 650</div>
           <div class="meta">Per Box</div>
         </div>
-
         <div class="qty">
           <button id="dec">-</button>
           <div id="qtyVal">1</div>
           <button id="inc">+</button>
         </div>
-
         <button class="btn-cta add" id="addQuick">Add to Cart</button>
-
-        <div style="font-size:13px;color:var(--muted);margin-top:6px">
-          Pickup in 30 mins · Delivery 45-60 mins
-        </div>
       </aside>
     </div>
 
-    <!-- PRODUCTS -->
     <section id="menu" class="section">
       <h2>Popular Items</h2>
-      <div class="grid" id="productGrid">
-        <!-- Cards inserted by JS -->
-      </div>
+      <div class="grid" id="productGrid"></div>
     </section>
 
-    <!-- Cakes -->
     <section id="cakes" class="section">
       <h2>Cakes & Specials</h2>
       <div class="grid" id="cakesGrid"></div>
     </section>
-
   </main>
 
   <footer id="contact">
@@ -247,14 +151,13 @@
         <div style="color:var(--muted)">021 111 542 543 · Karachi, Pakistan</div>
       </div>
       <div class="socials">
-        <a href="#" aria-label="facebook">Facebook</a>
-        <a href="#" aria-label="instagram">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
       </div>
     </div>
   </footer>
 
-  <!-- Cart modal -->
-  <div class="modal" id="cartModal" aria-hidden="true">
+  <div class="modal" id="cartModal">
     <div class="panel">
       <h3>Your Cart</h3>
       <div id="cartItems"></div>
@@ -269,7 +172,6 @@
   </div>
 
   <script>
-    /* Simple carousel */
     (function(){
       const slidesEl = document.querySelector('.slides');
       const slides = document.querySelectorAll('.slide');
@@ -298,14 +200,13 @@
       setInterval(()=>{ idx = (idx+1)%total; update(); }, 4500);
     })();
 
-    /* Simple product data */
     const products = [
-      {id:1, title:'Gulab Jamun Box', price:650, img:'images/p1.jpg', desc:'Soft gulab jamun with rabri.'},
-      {id:2, title:'Rabri (500g)', price:480, img:'images/p2.jpg', desc:'Creamy rabri, home-style.'},
-      {id:3, title:'Classic Cake (1kg)', price:2200, img:'images/p3.jpg', desc:'Vanilla sponge with buttercream.'},
-      {id:4, title:'Assorted Mithai Box', price:1300, img:'images/p4.jpg', desc:'Mix of classic mithai.'},
-      {id:5, title:'Chocolate Brownie Tray', price:900, img:'images/p5.jpg', desc:'Rich fudgy brownies.'},
-      {id:6, title:'Baklava Slice', price:160, img:'images/p6.jpg', desc:'Crispy & sweet.'},
+      {id:1, title:'Gulab Jamun Box', price:650, img:'p1.jpg', desc:'Soft gulab jamun with rabri.'},
+      {id:2, title:'Rabri (500g)', price:480, img:'p2.jpg', desc:'Creamy rabri, home-style.'},
+      {id:3, title:'Classic Cake (1kg)', price:2200, img:'p3.jpg', desc:'Vanilla sponge with buttercream.'},
+      {id:4, title:'Assorted Mithai Box', price:1300, img:'p4.jpg', desc:'Mix of classic mithai.'},
+      {id:5, title:'Chocolate Brownie Tray', price:900, img:'p5.jpg', desc:'Rich fudgy brownies.'},
+      {id:6, title:'Baklava Slice', price:160, img:'p6.jpg', desc:'Crispy & sweet.'},
     ];
 
     function createCard(p){
@@ -318,7 +219,7 @@
         <div style="display:flex;justify-content:space-between;align-items:center">
           <div style="font-weight:700">PKR ${p.price}</div>
           <div class="actions">
-            <button class="btn-add" data-id="${p.id}" style="padding:8px;border-radius:8px;border:1px solid #eee">Add</button>
+            <button class="btn-add" data-id="${p.id}">Add</button>
           </div>
         </div>
       `;
@@ -328,7 +229,6 @@
     const productGrid = document.getElementById('productGrid');
     products.forEach(p=>productGrid.appendChild(createCard(p)));
 
-    /* Cart logic */
     const cart = {};
     const cartBtn = document.getElementById('openCartBtn');
     const cartModal = document.getElementById('cartModal');
@@ -351,9 +251,7 @@
         const div = document.createElement('div');
         div.className = 'cart-item';
         div.innerHTML = `<img src="${item.img}" alt="${item.title}"><div style="flex:1"><strong>${item.title}</strong><div style="color:var(--muted)">PKR ${item.price} × ${item.qty}</div></div>
-          <div>
-            <button data-id="${id}" class="remove">Remove</button>
-          </div>`;
+          <div><button data-id="${id}" class="remove">Remove</button></div>`;
         cartItemsEl.appendChild(div);
       });
       cartTotalEl.innerText = 'PKR ' + total;
@@ -367,7 +265,6 @@
       });
     }
 
-    // add from product cards
     document.addEventListener('click', e=>{
       if(e.target.matches('.btn-add')){
         const id = Number(e.target.dataset.id);
@@ -378,31 +275,23 @@
       }
     });
 
-    // quick order qty
     inc.addEventListener('click', ()=>{ quickQty++; qtyVal.innerText = quickQty; });
     dec.addEventListener('click', ()=>{ if(quickQty>1) quickQty--; qtyVal.innerText = quickQty; });
 
     addQuick.addEventListener('click', ()=>{
-      const p = products[0]; // quick product reference (Gulab Jamun)
+      const p = products[0];
       if(!cart[p.id]) cart[p.id] = {...p, qty: quickQty};
       else cart[p.id].qty += quickQty;
       renderCart();
       cartModal.classList.add('show');
-      cartModal.setAttribute('aria-hidden','false');
     });
 
-    // cart modal open/close
-    cartBtn.addEventListener('click', ()=>{ cartModal.classList.toggle('show'); cartModal.setAttribute('aria-hidden', cartModal.classList.contains('show')? 'false':'true'); });
-    document.getElementById('closeCart').addEventListener('click', ()=>{ cartModal.classList.remove('show'); cartModal.setAttribute('aria-hidden','true'); });
+    cartBtn.addEventListener('click', ()=>{ cartModal.classList.toggle('show'); });
+    document.getElementById('closeCart').addEventListener('click', ()=>{ cartModal.classList.remove('show'); });
 
-    // checkout (placeholder)
-    document.getElementById('checkout').addEventListener('click', ()=>{
-      alert('Checkout placeholder. Integrate with payment gateway or WhatsApp/Phone order flow.');
-    });
+    document.getElementById('checkout').addEventListener('click', ()=>{ alert('Checkout placeholder.'); });
 
-    // init
     renderCart();
-
   </script>
 </body>
 </html>
