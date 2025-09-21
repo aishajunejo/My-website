@@ -46,9 +46,28 @@ nav .menu a:hover { color:#0073e6; }
 
 /* Gallery Grid */
 .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:20px; max-width:1200px; margin:auto; }
-.gallery-item { display:none; } /* hidden by default */
+.gallery-item {
+  display: none; /* hidden by default */
+  padding: 10px; /* space between image and frame */
+  background: #fff; /* frame color */
+  border: 5px solid #ddd; /* frame border */
+  border-radius: 10px; /* rounded corners */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* soft shadow */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
 .gallery-item img {
-  width:100%; height:220px; object-fit:cover; border-radius:8px; cursor:pointer; transition:transform 0.3s;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 5px; /* inner rounding inside frame */
+  cursor: pointer;
+  display: block;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
 }
 .gallery-item img:hover { transform:scale(1.05); }
 
