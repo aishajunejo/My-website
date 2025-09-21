@@ -2,318 +2,187 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pixelcraft Collective</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixelcraft Photography</title>
   <style>
-    /* Reset and base */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* Hero section */
-    .hero {
-      position: relative;
-      height: 80vh;
-      min-height: 500px;
-      background: url('hero-image.jpg') center center / cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
-    }
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.4);
-    }
-    .hero-content {
-      position: relative;
-      max-width: 800px;
-      padding: 20px;
-      z-index: 1;
-    }
-    .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-    }
-    .hero-content p {
-      font-size: 1.2rem;
-    }
-    .btn {
-      display: inline-block;
-      background: #0073e6;
-      color: white;
-      padding: 12px 25px;
-      margin-top: 20px;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background: #005bb5;
-    }
+    /* Reset & base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #fff; }
 
     /* Navigation */
     nav {
       position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      top: 0; left: 0; width: 100%;
+      padding: 20px 40px;
+      display: flex; justify-content: space-between; align-items: center;
       background: rgba(255,255,255,0.9);
       z-index: 100;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    nav .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    nav .menu {
+    nav .logo { font-size: 1.5rem; font-weight: bold; }
+    nav .menu a { margin-left: 20px; font-weight: bold; color: #333; text-decoration: none; transition: color 0.3s; }
+    nav .menu a:hover { color: #0073e6; }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('hero-photo.jpg') center center / cover no-repeat;
       display: flex;
-      gap: 20px;
-    }
-    nav .menu a {
-      color: #333;
-      font-weight: bold;
-    }
-
-    /* Services / What we do */
-    .services {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-      text-align: center;
-    }
-    .services h2 {
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-    }
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-    .service-item {
+      align-items: center;
+      justify-content: center;
       position: relative;
-      overflow: hidden;
-      border-radius: 8px;
-    }
-    .service-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-    .service-item:hover img {
-      transform: scale(1.1);
-    }
-    .service-item .service-title {
-      position: absolute;
-      bottom: 15px;
-      left: 15px;
-      color: white;
-      background: rgba(0,0,0,0.5);
-      padding: 10px 15px;
-      border-radius: 5px;
-      font-size: 1.2rem;
-    }
-
-    /* Portfolio / Gallery section */
-    .portfolio {
-      padding: 60px 20px;
-      background: #f9f9f9;
-    }
-    .portfolio h2 {
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
+      color: #fff;
     }
-    .portfolio-grid {
-      max-width: 1000px;
+    .hero::after {
+      content: "";
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.3);
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-content h1 { font-size: 3rem; letter-spacing: 2px; margin-bottom: 15px; }
+    .hero-content p { font-size: 1.2rem; margin-bottom: 25px; }
+    .hero-content .btn {
+      padding: 12px 25px;
+      background: #0073e6;
+      color: #fff;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .hero-content .btn:hover { background: #005bb5; }
+
+    /* Gallery Section */
+    .gallery {
+      padding: 60px 20px;
+      max-width: 1200px;
       margin: auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
-    .portfolio-grid img {
+    .gallery img {
       width: 100%;
       height: 220px;
       object-fit: cover;
-      border-radius: 6px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
     }
-    .portfolio-grid img:hover {
-      transform: scale(1.03);
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      top:0; left:0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+    .lightbox:target { display: flex; }
+
+    /* About Section */
+    .about {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+    .about h2 { font-size: 2.5rem; margin-bottom: 20px; }
+    .about p { font-size: 1.1rem; color: #555; }
 
     /* Contact Section */
     .contact {
       padding: 60px 20px;
       max-width: 600px;
       margin: auto;
-    }
-    .contact h2 {
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 30px;
     }
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .contact form input, .contact form textarea {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-    .contact form textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-    .contact form button {
-      align-self: center;
-      background: #0073e6;
-      color: white;
-      padding: 12px 30px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .contact form button:hover {
-      background: #005bb5;
-    }
+    .contact h2 { font-size: 2.5rem; margin-bottom: 30px; }
+    .contact p { margin-bottom: 10px; font-size: 1.1rem; }
+    .contact a { color: #0073e6; text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
 
     /* Footer */
     footer {
-      background: #222;
-      color: #fff;
       text-align: center;
       padding: 40px 20px;
-    }
-    footer p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-    footer .socials {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-    footer .socials a {
+      background: #222;
       color: #fff;
-      font-size: 1.2rem;
     }
 
-    /* Responsive tweaks */
+    /* Responsive */
     @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-      .hero-content p {
-        font-size: 1rem;
-      }
+      .hero-content h1 { font-size: 2.2rem; }
+      .hero-content p { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <div class="logo">Pixelcraft Collective</div>
+    <div class="logo">Pixelcraft Photography</div>
     <div class="menu">
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="hero-overlay"></div>
+  <section class="hero">
     <div class="hero-content">
-      <h1>Creative Services for Brands</h1>
-      <p>Professional photography, video, creative direction & full-cycle visuals</p>
-      <a href="#contact" class="btn">Get in Touch</a>
-    </div>
-  </header>
-
-  <section id="services" class="services">
-    <h2>What We Do</h2>
-    <div class="service-grid">
-      <div class="service-item">
-        <img src="service1.jpg" alt="Product Photography">
-        <div class="service-title">Product Photography</div>
-      </div>
-      <div class="service-item">
-        <img src="service2.jpg" alt="Food & Styling">
-        <div class="service-title">Food & Styling</div>
-      </div>
-      <div class="service-item">
-        <img src="service3.jpg" alt="Studio Hire">
-        <div class="service-title">Studio Hire</div>
-      </div>
-      <div class="service-item">
-        <img src="service4.jpg" alt="Creative Direction">
-        <div class="service-title">Creative Direction</div>
-      </div>
+      <h1>Pixelcraft Photography</h1>
+      <p>Capturing moments, telling stories</p>
+      <a href="#contact" class="btn">Book a Session</a>
     </div>
   </section>
 
-  <section id="portfolio" class="portfolio">
-    <h2>Portfolio</h2>
-    <div class="portfolio-grid">
-      <img src="photo1.jpg" alt="Portfolio 1">
-      <img src="photo2.jpg" alt="Portfolio 2">
-      <img src="photo3.jpg" alt="Portfolio 3">
-      <img src="photo4.jpg" alt="Portfolio 4">
-      <img src="photo5.jpg" alt="Portfolio 5">
-      <img src="photo6.jpg" alt="Portfolio 6">
-    </div>
+  <section id="gallery" class="gallery">
+    <!-- Lightbox links -->
+    <a href="#img1"><img src="photo1.jpg" alt="Photography 1"></a>
+    <a href="#img2"><img src="photo2.jpg" alt="Photography 2"></a>
+    <a href="#img3"><img src="photo3.jpg" alt="Photography 3"></a>
+    <a href="#img4"><img src="photo4.jpg" alt="Photography 4"></a>
+    <a href="#img5"><img src="photo5.jpg" alt="Photography 5"></a>
+    <a href="#img6"><img src="photo6.jpg" alt="Photography 6"></a>
+  </section>
+
+  <!-- Lightbox Images -->
+  <div id="img1" class="lightbox"><a href="#gallery"><img src="photo1.jpg"></a></div>
+  <div id="img2" class="lightbox"><a href="#gallery"><img src="photo2.jpg"></a></div>
+  <div id="img3" class="lightbox"><a href="#gallery"><img src="photo3.jpg"></a></div>
+  <div id="img4" class="lightbox"><a href="#gallery"><img src="photo4.jpg"></a></div>
+  <div id="img5" class="lightbox"><a href="#gallery"><img src="photo5.jpg"></a></div>
+  <div id="img6" class="lightbox"><a href="#gallery"><img src="photo6.jpg"></a></div>
+
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>Hello! I’m the creator of Pixelcraft Photography. I specialize in capturing stunning visuals that tell stories — from portraits to landscapes, every shot is crafted with care and passion.</p>
   </section>
 
   <section id="contact" class="contact">
-    <h2>Let’s Work Together</h2>
-    <form action="#" method="post">
-      <input type="text" name="name" placeholder="Your Name *" required>
-      <input type="email" name="email" placeholder="Your Email *" required>
-      <textarea name="message" placeholder="Tell us about your project *" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:ayesha.junejo.111@gmail.com">ayesha.junejo.111@gmail.com</a></p>
+    <p>Instagram: <a href="https://instagram.com/pixelcraftsdesigns" target="_blank">@pixelcraftsdesigns</a></p>
   </section>
 
   <footer>
-    <p>© 2025 Pixelcraft Collective</p>
-    <div class="socials">
-      <a href="#">Instagram</a>
-      <a href="#">Twitter</a>
-      <a href="#">Pinterest</a>
-    </div>
+    <p>© 2025 Pixelcraft Photography</p>
   </footer>
 
-  <!-- (Optional) Lightbox script or simple JS for menu toggling etc. -->
 </body>
 </html>
